@@ -1,5 +1,5 @@
 import React from "react";
-import { render, getByLabelText, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import CheckoutForm from "./CheckoutForm";
 
 // Write up the two tests here and make sure they are testing what the title shows
@@ -9,32 +9,23 @@ test("form header renders", () => {
 });
 
 test("form shows success message on submit with form details", () => {
-
+  //Render the Form
     render(<CheckoutForm />)
+  //Get the inputs
+   const firstNameI = screen.findByLabelText(/firstname/i)
 
-    screen.findByRole('textbox', {
-        name: /first name:/i
-      })
+   const lastNameI = screen.findByLabelText(/lastname:/i) 
 
-    screen.findByRole('textbox', {
-        name: /last name:/i
-    })
+   const addressI = screen.findByLabelText(/address:/i) 
 
-    screen.findByRole('textbox', {
-        name: /address:/i
-    })
+   const cityI = screen.findByLabelText(/city:/i) 
 
-    screen.findByRole('textbox', {
-        name: /city:/i
-    })
+   const stateI = screen.findByLabelText(/state:/i) 
 
-    screen.findByRole('textbox', {
-        name: /state:/i
-    })
+   const zipI = screen.findByLabelText(/zip:/i) 
 
-    screen.findByRole('textbox', {
-        name: /zip:/i
-    })
+  //put things in the input
 
+    fireEvent.change(firstNameI, {target: {value: 'John'}})
 
 });
