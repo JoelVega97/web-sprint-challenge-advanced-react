@@ -4,7 +4,17 @@ import { useState } from "react"
 
 export const useForm = () => {
 
-    const [values, setValues] = useState();
+    const initialValue = {
+        firstName: "",
+        lastName: "",
+        address: "",
+        city: "",
+        state: "",
+        zip: "",
+      };
+      
+
+    const [values, setValues] = useState(initialValue);
  
     const handleChanges =   (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -12,5 +22,5 @@ export const useForm = () => {
     
       
 
-    return [values, handleChanges]
+    return [values, handleChanges, initialValue]
 }
